@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useState,useContext, useEffect } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import Input from "./Input";
@@ -11,10 +11,14 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Button from "./AllButtons";
 import Label from "./Label";
 import Image from "./Image";
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css'
 
 function FormikContainer({ isEdit, ...props }) {
   let navigate = useNavigate();
   const location = useLocation();
+
+  const[crop, setCrop] = useState({ aspect: 16 / 9});
 
   const closeModal = () => {
     navigate("/data");
@@ -101,7 +105,7 @@ function FormikContainer({ isEdit, ...props }) {
     previewData(selectFile);
     // eslint-disable-next-line
   }, []);
-
+ 
   const previewData = (file) => {
     const objectURL = URL.createObjectURL(file);
     console.log("AdddSelectFile", file);
@@ -127,6 +131,9 @@ function FormikContainer({ isEdit, ...props }) {
     }
     navigate("/data");
   };
+   const onLoad = (selectFile) => {
+    
+  }
 
   return (
     <Formik {...props} {...{ onSubmit, initialValues, validationSchema }}>
@@ -158,7 +165,10 @@ function FormikContainer({ isEdit, ...props }) {
               previewData(e.target.files[0]);
             }}
           />
-          {selectFile && <Image source={preview} alt="no preview available" />}
+          {selectFile && 
+            <Image src={preview} alt="no preview Available" onImageLoaded={setSelectFile} />
+          }
+         
           <Button
             type="submit"
             className="btn btn-primary mx-2"
