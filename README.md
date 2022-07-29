@@ -1,15 +1,8 @@
 # Signup form with formik
 Create simple form using context api 
-## screenshot
-![Signup screenshott](./src/assets/signup.png)
 
 ## Links
 Formik : https://formik.org <br/>
-
-### Video Tutorial
-You can see my youtube video for this project in [here](https://youtu.be/u-CCnDayNJw)
-
-
 ## Available Scripts
 
 In the project directory, you can run:
