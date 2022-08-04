@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import rocketImg from './assets/rocket.png';
+// import rocketImg from './assets/rocket.png';
 import "./App.css";
 import FormikContainer from "./components/FormikContainer"; 
 import ViewData from "./components/ViewData";
@@ -19,7 +19,7 @@ function App() {
     <BrowserRouter>
     <div className="container mt-6">
       <div className="row">
-        <div className="col-md-30">
+        <div className="col-md-18">
           <Routes>
           {publicRoute.map(({path, component}, idx) => (
             <Route key={idx} {...{path, element: component}} />

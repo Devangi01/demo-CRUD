@@ -19,6 +19,7 @@ const DataProvider = (props) => {
         name: "iamge.jpg",
       },
       user_id: "id8f6d89c8b9b26",
+      imageUrl :"https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/surprising-flower-meanings-balloon-flowers-1650767465.jpg"
     },
     {
       checkBoxOptions: ["reading", "cricket", "music"],
@@ -33,6 +34,7 @@ const DataProvider = (props) => {
         name: "dwnld.jfif",
       },
       user_id: "id51f5a33290b79",
+      imageUrl :"https://images.pexels.com/photos/7091903/pexels-photo-7091903.jpeg?cs=srgb&dl=pexels-juan-martin-lopez-7091903.jpg&fm=jpg"
     },
   ];
   const [data, setData] = useState(dummyData);
@@ -41,7 +43,7 @@ const DataProvider = (props) => {
   
   return (
     <DataContext.Provider
-    value={{ isEdit, setIsEdit, data, setData, updateData, setUpdateData,selectFile,setSelectFile,preview,setPreview }}
+    value={{ isEdit, setIsEdit, data, setData, updateData, setUpdateData,selectFile,setSelectFile,preview,setPreview, dummyData }}
     >
       {props.children}
     </DataContext.Provider>

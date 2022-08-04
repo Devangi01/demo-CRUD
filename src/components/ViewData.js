@@ -1,13 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import DataContext from "../context/DataContext";
 import { useNavigate } from "react-router-dom";
 import Button from "./AllButtons";
+import Image from "./Image";
+
 
 function ViewData() {
   let navigate = useNavigate();
   const { data, setData, setIsEdit, setUpdateData, setSelectFile, setPreview } =
     useContext(DataContext);
-  console.log("dataaa", data);
+    const [isShowModal, setIsShowModal] = useState(false);
 
   const editOnClick = (id) => {
     setIsEdit(true);
@@ -16,14 +18,22 @@ function ViewData() {
     setUpdateData({ ...editData });
     navigate(`/edit-user/${id}`, { state: { id } });
   };
-  console.log(data);
+  
+
   const handleDelete = (id) => {
+    var msj='Are you sure that you want to delete?';
+   if (!window.confirm(msj)) { 
+      return false;
+   } else {
     const filterData = data.filter((item) => item.user_id !== id);
     setData(filterData);
+   }
+   
   };
 
   return (
     <div className="container">
+      {isShowModal && console.log(isShowModal)}
       <Button
         type="button"
         name="ADD NEW DATA"
@@ -45,6 +55,7 @@ function ViewData() {
             <th scope="col">Payment</th>
             <th scope="col">Hobbies</th>
             <th scope="col">Email</th>
+            <th scope="col">Image</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -58,11 +69,12 @@ function ViewData() {
                 <td>{item.radioOptions}</td>
                 <td>{item.checkBoxOptions.join(",")}</td>
                 <td>{item.email}</td>
+                <td><Image src={item.imageUrl} height="100px" width="100px" alt="no preview" /></td>
                 <td>
                   <Button
                     type="button"
-                    name="Edit"
-                    className="btn btn-primary mx-2"
+                    name="Update"
+                    className="btn btn-primary mb-2"
                     handleOnClick={() => {
                       editOnClick(item.user_id);
                     }}
@@ -70,6 +82,8 @@ function ViewData() {
                   <Button
                     type="button"
                     name="Delete"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#exampleModal"
                     className="btn btn-danger"
                     handleOnClick={() => handleDelete(item.user_id)}
                   />

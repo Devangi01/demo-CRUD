@@ -1,4 +1,4 @@
-# Signup form with formik
+# Registration form with Formik and Yup validation 
 Create simple form using context api 
 
 ## Links
@@ -7,7 +7,8 @@ Formik : https://formik.org <br/>
 
 In the project directory, you can run:
 
-### `yarn start`
+### `yarn start` 
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.

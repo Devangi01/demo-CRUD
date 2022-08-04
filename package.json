@@ -10,7 +10,7 @@
     "formik": "^2.2.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-image-crop": "^10.0.4",
+    "react-image-crop": "^10.0.5",
     "react-router-dom": "^6.3.0",
     "react-scripts": "4.0.1",
     "routes": "^2.1.0",

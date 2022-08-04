@@ -1,21 +1,16 @@
-import React, { useState } from "react";
-import ReactCrop from "react-image-crop";
-import "react-image-crop/dist/ReactCrop.css";
-import Button from "./AllButtons";
+import React from "react";
 
-const Image = ({ src, alt, onImageLoaded }) => {
+import "react-image-crop/dist/ReactCrop.css";
+
+
+const Image = ({ src, alt, ...rest }) => {
   const imageStyle = {
-    height: "100px",
-    width: "100px",
+    height: "300px",
+    width: "300px",
   };
 
-  const [crop, setCrop] = useState({ aspect: 16 / 9 });
   return (
-    <div className="formlabel">
-      <ReactCrop onImageLoaded={onImageLoaded} crop={crop} onChange={setCrop}>
-        <img src={src} {...{ alt }} style={imageStyle} />
-      </ReactCrop>
-    </div>
+      <img src={src} alt={alt} {...rest}  />
   );
 };
 
